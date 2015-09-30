@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.indasil.seminar.domain">
+
+
+    <class name="SeminarEvent" table="SEMINAR_EVENT">
+        <id name="id" column="SEMINAR_EVENT_ID">
+            <generator class="identity"/>
+        </id>
+
+        <property name="endDate" column="END_DATE" type="date"/>
+        <property name="startDate" column="START_DATE" type="date"/>
+
+        <property name="speaker" type="java.lang.String" column="SPEAKER_NAME"/>
+        <!-- An event can only belong to one seminar -->
+        <many-to-one name="seminar" column="SEMINAR_ID" class="Seminar"/>
+    </class>
+
+</hibernate-mapping>
