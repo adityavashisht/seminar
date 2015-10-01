@@ -23,4 +23,8 @@
 
     </class>
 
+    <query name="query.Seminar.getByStartDate">
+        from Seminar s where s.start =:start
+    </query>
+
 </hibernate-mapping>
