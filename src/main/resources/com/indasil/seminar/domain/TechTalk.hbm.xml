@@ -23,6 +23,14 @@
             </type>
         </property>
 
+        <property name="dayOfWeek" column="DAY_OF_WEEK" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.indasil.seminar.domain.DayOfWeek</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+
+
         <many-to-one name="seminarEvent" class="SeminarEvent" column="SEMINAR_EVENT_ID"/>
 
 

@@ -10,10 +10,20 @@ public class TechTalk implements Serializable {
 
     private Long id;
     private TechTalkType techTalkType;
+    private DayOfWeek dayOfWeek;
     private Date startDate;
     private Date endDate;
     private String speaker;
     private SeminarEvent seminarEvent;
+
+
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(DayOfWeek dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
 
     public SeminarEvent getSeminarEvent() {
         return seminarEvent;

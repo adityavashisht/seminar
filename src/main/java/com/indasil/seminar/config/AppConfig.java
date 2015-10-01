@@ -71,7 +71,7 @@ public class AppConfig {
     Properties hibernateProperties() {
         return new Properties() {
             {
-                setProperty("hibernate.hbm2ddl.auto", "create-drop");
+                /*setProperty("hibernate.hbm2ddl.auto", "create-drop");*//*setProperty("hibernate.hbm2ddl.auto", "create-drop");*/
                 setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL57InnoDBDialect");
                 setProperty("hibernate.current_session_context_class","org.springframework.orm.hibernate5.SpringSessionContext");
                 setProperty("hibernate.cache.region.factory_class","org.hibernate.cache.internal.NoCachingRegionFactory");

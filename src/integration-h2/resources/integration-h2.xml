@@ -10,9 +10,9 @@
 
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/zerotohero"/>
-        <property name="username" value="root"/>
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <property name="url" value=" 	jdbc:h2:mem:zero2hero"/>
+        <property name="username" value=""/>
         <property name="password" value=""/>
     </bean>
 
@@ -39,13 +39,12 @@
             <props>
                 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.internal.NoCachingRegionFactory
                 </prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57InnoDBDialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
                 <prop key="hibernate.current_session_context_class">
                     org.springframework.orm.hibernate5.SpringSessionContext
                 </prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.format_sql">true</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
 
             </props>
         </property>

@@ -1,5 +1,6 @@
-package com.indasil.seminar.domain;
+package com.indasil.seminar.integration;
 
+import com.indasil.seminar.domain.*;
 import com.indasil.seminar.service.SeminarService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,11 +19,11 @@ import java.util.Date;
 @RunWith(SpringJUnit4ClassRunner.class)
 // Multiple locations can be specified with comma delimited values
 @ContextConfiguration(locations = {
-        "/service-config.xml"
+        "/integration-h2.xml"
 
 })
 @Transactional
-public class DomainTest {
+public class SeminarIntegrationTest {
 
     @Autowired
     private SeminarService seminarService;
@@ -60,6 +61,7 @@ public class DomainTest {
         seminar.getSeminarEventSet().add(seminarEvent);
 
 
+
         seminar.setStart(new Date());
 
         seminarService.addSeminar(seminar);
@@ -72,24 +74,6 @@ public class DomainTest {
         Seminar seminar = seminarService.getSeminarById(1L);
         Assert.assertEquals("Health Care Stuff", seminar.getName());
 
-    }
-
-    @Test
-    public void testGetSeminarByDate() {
-        Seminar seminar = seminarService.getByStartDate(new Date());
-        Assert.assertNotNull(seminar);
-    }
-
-    @Test
-    public void testGetSeminarByNamedParameterDate() {
-        Seminar seminar = seminarService.getByStartDateByNamedParameter(new Date());
-        Assert.assertNotNull(seminar);
-    }
-
-    @Test
-    public void testByNamedQuery() {
-        Seminar seminar = seminarService.getByDateAndNamedQuery(new Date());
-        Assert.assertNotNull(seminar);
     }
 
 
