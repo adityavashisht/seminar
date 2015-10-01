@@ -2,6 +2,8 @@ package com.indasil.seminar.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by vashishta on 9/30/15.
@@ -12,7 +14,26 @@ public class SeminarEvent implements Serializable {
     private Seminar seminar;
     private Date startDate;
     private Date endDate;
-    private String speaker;
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    private Set<TechTalk> techTalkSet = new HashSet<>();
+
+
+    public Set<TechTalk> getTechTalkSet() {
+        return techTalkSet;
+    }
+
+    public void setTechTalkSet(Set<TechTalk> techTalkSet) {
+        this.techTalkSet = techTalkSet;
+    }
 
     public Long getId() {
         return id;
@@ -46,11 +67,4 @@ public class SeminarEvent implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getSpeaker() {
-        return speaker;
-    }
-
-    public void setSpeaker(String speaker) {
-        this.speaker = speaker;
-    }
 }

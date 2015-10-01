@@ -18,6 +18,7 @@ public class SeminarService {
     private SessionFactory sessionFactory;
 
     public void addSeminar(Seminar seminar) {
+        sessionFactory.getCurrentSession().save(seminar);
 
     }
 }

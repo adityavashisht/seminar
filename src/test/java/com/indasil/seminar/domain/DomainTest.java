@@ -9,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * Created by vashishta on 9/30/15.
  */
@@ -28,6 +30,45 @@ public class DomainTest {
     @Test
     @Rollback(false)
     public void testSeminar() {
-        seminarService.addSeminar(new Seminar());
+
+        TechTalk techTalk = new TechTalk();
+        techTalk.setSpeaker("Aditya");
+        techTalk.setStartDate(new Date());
+        techTalk.setEndDate(new Date());
+        techTalk.setTechTalkType(TechTalkType.HEALTH_CARE);
+
+        SeminarEvent seminarEvent = new SeminarEvent();
+
+        seminarEvent.setStartDate(new Date());
+        seminarEvent.setEndDate(new Date());
+        seminarEvent.setActive(true);
+
+        // Tell child about parent
+        techTalk.setSeminarEvent(seminarEvent);
+        // ADd child to parent collection
+        seminarEvent.getTechTalkSet().add(techTalk);
+
+
+        Seminar seminar = new Seminar();
+        seminar.setName("Health Care Stuff");
+
+        // Tell child about parent
+        seminarEvent.setSeminar(seminar);
+        // ADd child to parent collection
+        seminar.getSeminarEventSet().add(seminarEvent);
+
+
+
+        seminar.setStart(new Date());
+
+        seminarService.addSeminar(seminar);
+
+
+
+
+
+
+
+
     }
 }

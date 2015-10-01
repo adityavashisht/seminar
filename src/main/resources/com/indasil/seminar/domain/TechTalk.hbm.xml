@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.indasil.seminar.domain">
+
+    <typedef class="com.indasil.seminar.domain.custom.UpperCaseStringType" name="upper_case_string"/>
+    <class name="TechTalk" table="TECH_TALK">
+        <id name="id" column="TECH_TALK_ID">
+            <generator class="identity"/>
+        </id>
+
+        <property name="endDate" column="END_DATE" type="date"/>
+        <property name="startDate" column="START_DATE" type="date"/>
+        <property name="speaker" column="SPEAKER_NAME" type="upper_case_string"/>
+
+        <property name="techTalkType" column="TECH_TALK_TYPE" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.indasil.seminar.domain.TechTalkType</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+
+        <many-to-one name="seminarEvent" class="SeminarEvent" column="SEMINAR_EVENT_ID"/>
+
+
+    </class>
+
+</hibernate-mapping>

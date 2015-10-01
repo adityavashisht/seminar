@@ -2,6 +2,7 @@ package com.indasil.seminar.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,7 +13,7 @@ public class Seminar implements Serializable {
     private String name;
     private Date start;
 
-    private Set<SeminarEvent> seminarEventSet;
+    private Set<SeminarEvent> seminarEventSet = new HashSet<>();
 
     public Set<SeminarEvent> getSeminarEventSet() {
         return seminarEventSet;

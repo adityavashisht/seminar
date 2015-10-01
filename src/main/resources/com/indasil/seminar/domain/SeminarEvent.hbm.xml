@@ -15,9 +15,14 @@
         <property name="endDate" column="END_DATE" type="date"/>
         <property name="startDate" column="START_DATE" type="date"/>
 
-        <property name="speaker" type="java.lang.String" column="SPEAKER_NAME"/>
+        <property name="active" type="yes_no" column="ACTIVE_FLAG"/>
         <!-- An event can only belong to one seminar -->
         <many-to-one name="seminar" column="SEMINAR_ID" class="Seminar"/>
+
+        <set name="techTalkSet" cascade="all-delete-orphan" inverse="true">
+            <key column="SEMINAR_EVENT_ID"/>
+            <one-to-many class="TechTalk"/>
+        </set>
     </class>
 
 </hibernate-mapping>
