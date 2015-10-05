@@ -1,7 +1,7 @@
 package com.indasil.seminar.domain;
 
-import com.samao.seminar.domain.Seminar;
-import com.samao.seminar.service.SeminarService;
+
+import com.indasil.seminar.service.SeminarService;
 import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;

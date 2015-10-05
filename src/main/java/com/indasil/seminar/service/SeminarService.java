@@ -1,8 +1,11 @@
 package com.indasil.seminar.service;
 
 import com.indasil.seminar.domain.Seminar;
+import com.indasil.seminar.domain.SeminarEvent;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -96,6 +99,35 @@ public class SeminarService {
         }
         return seminar;
 
+
+    }
+
+
+    public Seminar getByCriteria(Date startDate) {
+
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Seminar.class);
+        criteria.add(Restrictions.between("start", startDate, startDate))
+
+        ;
+
+        List<Seminar> seminarList = criteria.list();
+
+        Seminar seminar = null;
+
+        if (seminarList != null && !seminarList.isEmpty()) {
+            seminar = seminarList.get(0);
+        }
+        return seminar;
+
+
+    }
+
+    public List<SeminarEvent> getEventsBySeminarId(Long id) {
+
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(SeminarEvent.class);
+        criteria.add(Restrictions.eq("seminar.id", id));
+
+        return criteria.list();
 
     }
 

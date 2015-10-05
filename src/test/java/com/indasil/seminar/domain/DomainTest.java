@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by vashishta on 9/30/15.
@@ -90,6 +91,18 @@ public class DomainTest {
     public void testByNamedQuery() {
         Seminar seminar = seminarService.getByDateAndNamedQuery(new Date());
         Assert.assertNotNull(seminar);
+    }
+
+    @Test
+    public void testByCriteria() {
+        Seminar seminar = seminarService.getByCriteria(new Date());
+        Assert.assertNotNull(seminar);
+    }
+
+    @Test
+    public void testGetSeminarEvents() {
+        List<SeminarEvent> eventList = seminarService.getEventsBySeminarId(1L);
+        Assert.assertNotNull(eventList);
     }
 
 

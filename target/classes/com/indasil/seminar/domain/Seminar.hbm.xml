@@ -24,7 +24,13 @@
     </class>
 
     <query name="query.Seminar.getByStartDate">
-        from Seminar s where s.start =:start
+        select s from Seminar s
+        inner join s.seminarEventSet events
+        where s.start =:start
+        and
+        events.startDate =:start
+
+
     </query>
 
 </hibernate-mapping>
